@@ -22,7 +22,7 @@ int main(void)
 	*ptr_GPIOA_MODREG &= ~(3 << 0);
 
 	//CLEAR THE MODE REG GPIOD
-	*ptr_GPIOD_MODREG &= ~(3 << 12);
+	*ptr_GPIOD_MODREG &= ~(3 << 24);
 
 	//SET THE MODE REG FOR GPIOD 12 PIN AS OUTPUT MODE
 	*ptr_GPIOD_MODREG |= (1 << 24);
