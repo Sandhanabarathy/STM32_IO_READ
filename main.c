@@ -1,20 +1,16 @@
-
-
 #include <stdint.h>
-
 
 int main(void)
 {
-	uint32_t *ptr_RCC_CLKREG	= (uint32_t*)0x40023830;
-	uint32_t *ptr_GPIOA_MODREG 	= (uint32_t*)0x40020000;
-	uint32_t *ptr_GPIOD_MODREG 	= (uint32_t*)0x40020C00;
-	uint32_t *ptr_GPIO_ODR 		= (uint32_t*)0x40020C14;
-	uint32_t *ptr_GPIO_IDR 		= (uint32_t*)0x40020010;
+	uint32_t volatile *const ptr_RCC_CLKREG		= (uint32_t*)0x40023830;
+	uint32_t volatile *const ptr_GPIOA_MODREG 	= (uint32_t*)0x40020000;
+	uint32_t volatile *const ptr_GPIOD_MODREG 	= (uint32_t*)0x40020C00;
+	uint32_t volatile *const ptr_GPIO_ODR 		= (uint32_t*)0x40020C14;
+	uint32_t volatile const *const ptr_GPIO_IDR = (uint32_t*)0x40020010;
 
 	//Enable RCC CLK REG for GPIOA & GPIOD
 	*ptr_RCC_CLKREG |= (1 << 0); //GPIOA
 	*ptr_RCC_CLKREG |= (1 << 3); //GPIOD
-
 
 	//CONFIGURE THE MODE OF I/O PIN
 
@@ -26,7 +22,6 @@ int main(void)
 
 	//SET THE MODE REG FOR GPIOD 12 PIN AS OUTPUT MODE
 	*ptr_GPIOD_MODREG |= (1 << 24);
-
 
     /* Loop forever */
 	for(;;)
